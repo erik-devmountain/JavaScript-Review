@@ -1,6 +1,10 @@
 /* Declare and Define the functions here that will make the function calls below work properly */
 
 
+var first = function(arg, cb) {
+  cb(arg[0]);
+}
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -12,7 +16,9 @@ first(names, function(firstName){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var last = function(arg, cb) {
+  cb(arg[arg.length - 1]);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -26,6 +32,15 @@ last(names, function(lastName){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 //have the contains function return a boolean value for if the name is in the array or not.
+
+var contains = function(str, arg, cb) {
+  for (var i = 0; i < arg.length; i++) {
+    if(arg[i] === str) {
+       return cb(str);
+    };
+  };
+  return cb(false);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -43,7 +58,13 @@ contains('Colt', names, function(yes){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
-
+var map = function(num, cb) {
+  var newArrayOne = [];
+  for (var i = 0; i < num.length; i++) {
+    newArrayOne.push(cb(num[i]));
+  };
+  return newArrayOne;
+}
 
 var numbers = [1,2,3,4,5];
 //Produces a new array of values by mapping each value in list through a transformation function
@@ -57,7 +78,21 @@ map(numbers, function(num){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
-
+var uniq = function(arr, callback) {
+  debugger;
+  var uniqArr = [];
+  arr = arr.sort();
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      arr.splice(i, 2);
+      i--;
+    }
+    else {
+      uniqArr.push(arr[i]);
+    }
+  }
+  callback(uniqArr);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
