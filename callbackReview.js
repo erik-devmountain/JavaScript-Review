@@ -5,13 +5,10 @@ var first = function(arg, cb) {
   cb(arg[0]);
 }
 
-
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
-
-
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -20,13 +17,10 @@ var last = function(arg, cb) {
   cb(arg[arg.length - 1]);
 }
 
-
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
-
-
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -104,12 +98,20 @@ uniq(names, function(uniqArr){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var each = function(arr, callback) {
+  var item;
+  var indice;
+  for (var i = 0; i < arr.length; i++) {
+    item = arr[i];
+    indice = i;
+    callback(item, indice);
+  }
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + 'position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item)
 });
 
 
@@ -117,7 +119,13 @@ each(names, function(item, indice){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var getUserById = function(str, arr, callback) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].id === str) {
+      callback(arr[i]);
+    };
+  };
+};
 
 
 var users = [
@@ -149,7 +157,13 @@ getUserById('16t', users, function(user){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var find = function(arr, callback) {
+  for (var i = 0; i < arr.length; i++) {
+     if (callback(arr[i])) {
+       return arr[i];
+     }
+  };
+}
 
 
 //Looks through each value in the list, returning the first one that passes a truth test 
